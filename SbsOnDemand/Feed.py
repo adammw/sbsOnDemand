@@ -6,6 +6,10 @@ try:
     import simplejson as json
 except ImportError: 
     import json
+try:
+    from urlparse import parse_qs
+except ImportError:
+    from cgi import parse_qs
 import urlparse
 import urllib
 import config
@@ -108,16 +112,20 @@ class Feed(object):
             self.feedId = feed["feedId"]
         else:
             # Extract feed PID from url
-            url = feed.get("furl", feed.get("url",None))
+            url = feed.get("furl", None)
+            if url is None or len(url) == 0:
+                url = feed.get("url",None)
             if url is not None and len(url) > 0:
                 parsedurl = urlparse.urlparse(url)
-                match = re.match('^/api/video_feed/f/'+config.MPX_FEEDID+'/(.+)$', parsedurl.path)
+                
+                # Extract feed id from parsedurl path
+                match = re.match('^/api/video_feed/f/'+config.MPX_FEEDID+'/(.+)$', parsedurl[2]) #parsedurl.path
                 if match is None:
                     raise Exception("Cannot extract feed identifier from url")
                 self.feedId = match.group(1)
-    
-                # Extract url parameters into filter dict
-                for k, v in urlparse.parse_qs(parsedurl.query).iteritems():
+                
+                # Extract url query parameters into filter dict
+                for k, v in parse_qs(parsedurl[4]).iteritems(): #parsedurl.query
                     if len(v)>1:
                         self.filter[k] = v
                     else:
