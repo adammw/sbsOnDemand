@@ -35,7 +35,9 @@ class Video(object):
     # @param params the video data to be parsed
     def _parseVideo(self,params):
         videoId = params.get('id',None)
-        if videoId is not None or not videoId.isdigit():
+        if videoId is not None and videoId.isdigit():
+            self.id = str(videoId)
+        elif videoId is not None:
             self.id = re.search("\d+",videoId).group(0)
         else:
             self.id = None
