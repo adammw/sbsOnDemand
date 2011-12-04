@@ -1,8 +1,5 @@
-'''
-Created on Dec 3, 2011
-
-@author: adam
-'''
+## @namespace SbsOnDemand::Video
+# Module for managing videos
 
 import re
 try:
@@ -14,26 +11,28 @@ import config
 from Category import Category
 from Media import Media
 
+## This exception is raised when a method is invoked on a Video object that requires an ID
 class NoIDException(Exception):
     def __str__(self):
         return "No ID Specified"
-
+## Gets a video from its id
+# @param videoId the ID number of the video
+# @return a Video object
 def getVideo(videoId):
     video = Video({"id":videoId})
     video._updateVideo()
     return video
 
+## Represents a single video
 class Video(object):
-    '''
-    Class for Video Objects
-    '''
 
+    ## Creates a video object
+    # @param params the video data to be parsed
     def __init__(self,params):
-        '''
-        Constructor
-        '''
         self._parseVideo(params)
         
+    ## Parses video data and populates Video data members
+    # @param params the video data to be parsed
     def _parseVideo(self,params):
         videoId = params.get('id',None)
         if videoId is not None or not videoId.isdigit():
@@ -76,12 +75,16 @@ class Video(object):
             if mediaObj.url is None:
                 self._mediaHasUrl = False
                 
+    ## Downloads the video data, allowing it to be parsed
     def _updateVideo(self):
         url = config.API_BASE + '/f/' + config.MPX_FEEDID + '/' + config.ALLDATA_FEEDID + '/' + self.id + '?' + urllib.urlencode({"form":"json"})
         page = urllib.urlopen(url)
         data = json.load(page)
         self._parseVideo(data)
         
+    ## Gets the available media associated with the video
+    # @param withUrl whether to ensure that the media has a download url
+    # @return a dict with two keys, `content` and `thumbnails`, each containing an array of Media objects 
     def getMedia(self, withUrl = True):
         if self.id is None:
             raise NoIDException()
@@ -91,5 +94,6 @@ class Video(object):
         else:
             return self._media
     
+    ## @see getMedia
     media = property(getMedia)
     

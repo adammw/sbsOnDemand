@@ -1,11 +1,14 @@
-'''
-Created on Dec 3, 2011
-
-@author: adam
-'''
+## @namespace SbsOnDemand::config
+# Module for setting configuration variables and storing global constants such as urls
 
 # User-specified constants
-PROXY = None # E.g. {'http': '127.0.0.1:8080'}
+
+## Manual proxy specification (can be used for debugging)
+#
+# Set to None for default (system) proxy
+#
+# Should be a dict object, such as {'http': '127.0.0.1:8080'}
+PROXY = None
 
 # Constants - don't change
 API_BASE = "http://www.sbs.com.au/api/video_feed"

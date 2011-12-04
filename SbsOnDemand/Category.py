@@ -1,17 +1,20 @@
-'''
-Created on Dec 3, 2011
+## @namespace SbsOnDemand::Category
+# Module for managing video categories
 
-@author: adam
-'''
-
+## Represents a category
 class Category(object):
     '''
-    classdocs
+    
     '''
+    
+    ## @var name
+    # the name of the category
+    ## @var scheme
+    # the scheme the category fits in to
 
+    ## Creates a Category object
+    # @param params Dictionary of parameters, should include `media$name` and `media$scheme`
     def __init__(self,params):
-        '''
-        Constructor
-        '''
         self.name = params.get('media$name',None)
         self.scheme = params.get('media$scheme',None)
+    

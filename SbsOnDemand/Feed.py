@@ -1,8 +1,5 @@
-'''
-Created on Dec 3, 2011
-
-@author: adam
-'''
+## @namespace SbsOnDemand::Feed
+# Module for managing video feeds
 
 import re
 try:
@@ -14,12 +11,17 @@ import urllib
 import config
 from Video import Video
 
+## Gets the default set of video feeds
+# @return Dict of Video objects, with their name as key
 def getDefaultFeeds():
     feeds = {};
     for feed in config.DEFAULT_FEEDS:
         feeds[feed['name']] = Feed(feed)
     return feeds
 
+## Gets the set of video feeds from SBS website menu
+# @return Array of dict objects, each object may contain a Feed object and/or an array of child Feeds
+# @note Not all feeds are video feeds, in that they may only have a title but no videos
 def getMenuFeeds():
     def parseMenuItem(menuItem):
         item = {"feed":Feed(menuItem)}
@@ -37,21 +39,29 @@ def getMenuFeeds():
         feeds[rootMenuName] = parseMenuItem(menu[rootMenuName])
     return feeds   
 
+## Gets a video feed based on a search query
+# @param query the search query 
+# @return A Feed object
 def searchFeed(query):
     return Feed({"feedId": config.SEARCH_FEEDID, "filter":{"q":query}}) 
 
-def getFeed(url):
+## Gets a video feed from the specified url
+# @param url the absolute url to fetch the feed from
+# @return A Feed object
+def getFeedFromUrl(url):
     return Feed({"url":url})
 
-class Feed(object):
-    '''
-    Class for Feed Object
-    '''
+## Gets a video feed by its unique feed identifier (PID)
+# @param feedId the feed unique identifier 
+def getFeedFromId(feedId):
+    return Feed({"feedId": feedId})
 
+## Represents a video feed
+class Feed(object):
+    
+    ## Creates a Feed object
+    # @param feed the feed to be parsed
     def __init__(self,feed):
-        '''
-        Constructor
-        '''
         self.feedId = None
         self.title = None
         self.thumbnail = None
@@ -62,6 +72,10 @@ class Feed(object):
         self._videos = None
         self._parseFeed(feed)
         
+    ## Downloads the feed, allowing it to be parsed
+    # @param count whether to ask for the total number of results or not
+    # @param startIndex the start index (offset) of entries within the feed to obtain
+    # @param itemsPerPage the maximum number of entries to contain within the feed
     def _updateFeed(self, count = False, startIndex = 0, itemsPerPage = 10):
         # We can't retrieve videos without a feed id
         if self.feedId is None:
@@ -80,6 +94,8 @@ class Feed(object):
         feed = json.load(page)
         self._parseFeed(feed)
         
+    ## Parses a feed
+    # @param feed the feed to be parsed, in dict form
     def _parseFeed(self, feed):
         self.title = feed.get("name", self.title)
         self.thumbnail = feed.get("thumbnail", self.thumbnail)
@@ -118,6 +134,11 @@ class Feed(object):
                 videos.append(Video(video))
             self._videos = videos
         
+    ## Gets the video entries from the feed
+    # @param count whether to ask for the total number of results or not
+    # @param startIndex the start index (offset) of entries within the feed to obtain
+    # @param itemsPerPage the maximum number of entries to contain within the feed
+    # @return an array of Video objects
     def getVideos(self, count = False, startIndex = 0, itemsPerPage = 10):
         # Use cached content if we can
         if self._videos is not None and startIndex == self.startIndex and itemsPerPage <= self.itemsPerPage:  # TODO handle pagination (count=true, range=start-finish, etc.)
@@ -132,6 +153,8 @@ class Feed(object):
         # Return videos
         return self._videos
     
+    ## Gets the total number of video entries contained in the feed
+    # @return the total number of video entries contained in the feed
     def getTotalResults(self):
         if self.feedId is None:
             return 0
@@ -142,7 +165,8 @@ class Feed(object):
         self._updateFeed(True)
         
         return self._totalResults
-    
+    ## @see getVideos
     videos = property(getVideos)
+    ## @see getTotalResults
     totalResults = property(getTotalResults)
         
