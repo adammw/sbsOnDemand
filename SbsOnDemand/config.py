@@ -4,8 +4,14 @@ Created on Dec 3, 2011
 @author: adam
 '''
 
+# User-specified constants
+PROXY = None # E.g. {'http': '127.0.0.1:8080'}
+
+# Constants - don't change
 API_BASE = "http://www.sbs.com.au/api/video_feed"
 MENU_URI = "http://www.sbs.com.au/ondemand/js/video-menu"
+LOGIN_URI = "http://my.sbs.com.au/go/login/onesiteSignIn"
+LOGOUT_URI = "http://www.sbs.com.au/api/Member/logout"
 MPX_FEEDID = "dYtmxB"
 SEARCH_FEEDID = "search"
 ALLDATA_FEEDID = "CxeOeDELXKEv"
