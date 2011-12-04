@@ -79,3 +79,8 @@ class Media(object):
                              "type":textstream.getAttribute('type')
                              })
         return captions
+    
+    baseUrl = property(getBaseUrl)
+    videoUrl = property(getVideoUrl)
+    captions = property(getCaptions)
+
