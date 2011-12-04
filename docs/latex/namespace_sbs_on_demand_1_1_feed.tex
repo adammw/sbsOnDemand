@@ -1,0 +1,128 @@
+\hypertarget{namespace_sbs_on_demand_1_1_feed}{
+\section{\-Sbs\-On\-Demand\-:\-:\-Feed \-Namespace \-Reference}
+\label{namespace_sbs_on_demand_1_1_feed}\index{\-Sbs\-On\-Demand\-::\-Feed@{\-Sbs\-On\-Demand\-::\-Feed}}
+}
+
+
+\-Module for managing video feeds.  
+
+
+\subsection*{\-Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{class_sbs_on_demand_1_1_feed_1_1_feed}{\-Feed}
+\begin{DoxyCompactList}\small\item\em \-Represents a video feed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+def \hyperlink{namespace_sbs_on_demand_1_1_feed_ae70ad1690068bcccc1c07fa009c0c183}{get\-Default\-Feeds}
+\begin{DoxyCompactList}\small\item\em \-Gets the default set of video feeds. \end{DoxyCompactList}\item 
+def \hyperlink{namespace_sbs_on_demand_1_1_feed_a5461b8578594d3d3419113c14e59146c}{get\-Menu\-Feeds}
+\begin{DoxyCompactList}\small\item\em \-Gets the set of video feeds from \-S\-B\-S website menu. \end{DoxyCompactList}\item 
+def \hyperlink{namespace_sbs_on_demand_1_1_feed_a764401ad3c64ff7d0d4254fca05ba54a}{search\-Feed}
+\begin{DoxyCompactList}\small\item\em \-Gets a video feed based on a search query. \end{DoxyCompactList}\item 
+def \hyperlink{namespace_sbs_on_demand_1_1_feed_a071c5bd67b98e9e29ffd684212a3d1fb}{get\-Feed\-From\-Url}
+\begin{DoxyCompactList}\small\item\em \-Gets a video feed from the specified url. \end{DoxyCompactList}\item 
+def \hyperlink{namespace_sbs_on_demand_1_1_feed_a2826493906b9dbe20999ca3bc23512dd}{get\-Feed\-From\-Id}
+\begin{DoxyCompactList}\small\item\em \-Gets a video feed by its unique feed identifier (\-P\-I\-D) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Module for managing video feeds. 
+
+\subsection{\-Function \-Documentation}
+\hypertarget{namespace_sbs_on_demand_1_1_feed_ae70ad1690068bcccc1c07fa009c0c183}{
+\index{\-Sbs\-On\-Demand\-::\-Feed@{\-Sbs\-On\-Demand\-::\-Feed}!get\-Default\-Feeds@{get\-Default\-Feeds}}
+\index{get\-Default\-Feeds@{get\-Default\-Feeds}!SbsOnDemand::Feed@{\-Sbs\-On\-Demand\-::\-Feed}}
+\subsubsection[{get\-Default\-Feeds}]{\setlength{\rightskip}{0pt plus 5cm}def \-Sbs\-On\-Demand\-::\-Feed\-::get\-Default\-Feeds (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{namespace_sbs_on_demand_1_1_feed_ae70ad1690068bcccc1c07fa009c0c183}
+
+
+\-Gets the default set of video feeds. 
+
+\begin{DoxyReturn}{\-Returns}
+\-Dict of \hyperlink{namespace_sbs_on_demand_1_1_video}{\-Video} objects, with their name as key 
+\end{DoxyReturn}
+\hypertarget{namespace_sbs_on_demand_1_1_feed_a2826493906b9dbe20999ca3bc23512dd}{
+\index{\-Sbs\-On\-Demand\-::\-Feed@{\-Sbs\-On\-Demand\-::\-Feed}!get\-Feed\-From\-Id@{get\-Feed\-From\-Id}}
+\index{get\-Feed\-From\-Id@{get\-Feed\-From\-Id}!SbsOnDemand::Feed@{\-Sbs\-On\-Demand\-::\-Feed}}
+\subsubsection[{get\-Feed\-From\-Id}]{\setlength{\rightskip}{0pt plus 5cm}def \-Sbs\-On\-Demand\-::\-Feed\-::get\-Feed\-From\-Id (
+\begin{DoxyParamCaption}
+\item[{}]{feed\-Id}
+\end{DoxyParamCaption}
+)}}
+\label{namespace_sbs_on_demand_1_1_feed_a2826493906b9dbe20999ca3bc23512dd}
+
+
+\-Gets a video feed by its unique feed identifier (\-P\-I\-D) 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em feed\-Id} & the feed unique identifier \\
+\hline
+\end{DoxyParams}
+\hypertarget{namespace_sbs_on_demand_1_1_feed_a071c5bd67b98e9e29ffd684212a3d1fb}{
+\index{\-Sbs\-On\-Demand\-::\-Feed@{\-Sbs\-On\-Demand\-::\-Feed}!get\-Feed\-From\-Url@{get\-Feed\-From\-Url}}
+\index{get\-Feed\-From\-Url@{get\-Feed\-From\-Url}!SbsOnDemand::Feed@{\-Sbs\-On\-Demand\-::\-Feed}}
+\subsubsection[{get\-Feed\-From\-Url}]{\setlength{\rightskip}{0pt plus 5cm}def \-Sbs\-On\-Demand\-::\-Feed\-::get\-Feed\-From\-Url (
+\begin{DoxyParamCaption}
+\item[{}]{url}
+\end{DoxyParamCaption}
+)}}
+\label{namespace_sbs_on_demand_1_1_feed_a071c5bd67b98e9e29ffd684212a3d1fb}
+
+
+\-Gets a video feed from the specified url. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em url} & the absolute url to fetch the feed from \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-A \hyperlink{class_sbs_on_demand_1_1_feed_1_1_feed}{\-Feed} object 
+\end{DoxyReturn}
+\hypertarget{namespace_sbs_on_demand_1_1_feed_a5461b8578594d3d3419113c14e59146c}{
+\index{\-Sbs\-On\-Demand\-::\-Feed@{\-Sbs\-On\-Demand\-::\-Feed}!get\-Menu\-Feeds@{get\-Menu\-Feeds}}
+\index{get\-Menu\-Feeds@{get\-Menu\-Feeds}!SbsOnDemand::Feed@{\-Sbs\-On\-Demand\-::\-Feed}}
+\subsubsection[{get\-Menu\-Feeds}]{\setlength{\rightskip}{0pt plus 5cm}def \-Sbs\-On\-Demand\-::\-Feed\-::get\-Menu\-Feeds (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}
+\label{namespace_sbs_on_demand_1_1_feed_a5461b8578594d3d3419113c14e59146c}
+
+
+\-Gets the set of video feeds from \-S\-B\-S website menu. 
+
+\begin{DoxyReturn}{\-Returns}
+\-Array of dict objects, each object may contain a \hyperlink{class_sbs_on_demand_1_1_feed_1_1_feed}{\-Feed} object and/or an array of child \-Feeds 
+\end{DoxyReturn}
+\begin{DoxyNote}{\-Note}
+\-Not all feeds are video feeds, in that they may only have a title but no videos 
+\end{DoxyNote}
+\hypertarget{namespace_sbs_on_demand_1_1_feed_a764401ad3c64ff7d0d4254fca05ba54a}{
+\index{\-Sbs\-On\-Demand\-::\-Feed@{\-Sbs\-On\-Demand\-::\-Feed}!search\-Feed@{search\-Feed}}
+\index{search\-Feed@{search\-Feed}!SbsOnDemand::Feed@{\-Sbs\-On\-Demand\-::\-Feed}}
+\subsubsection[{search\-Feed}]{\setlength{\rightskip}{0pt plus 5cm}def \-Sbs\-On\-Demand\-::\-Feed\-::search\-Feed (
+\begin{DoxyParamCaption}
+\item[{}]{query}
+\end{DoxyParamCaption}
+)}}
+\label{namespace_sbs_on_demand_1_1_feed_a764401ad3c64ff7d0d4254fca05ba54a}
+
+
+\-Gets a video feed based on a search query. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em query} & the search query \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-A \hyperlink{class_sbs_on_demand_1_1_feed_1_1_feed}{\-Feed} object 
+\end{DoxyReturn}

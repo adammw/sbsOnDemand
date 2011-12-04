@@ -1,0 +1,31 @@
+\hypertarget{index_intro_sec}{}\section{\-Introduction}\label{index_intro_sec}
+\-This package is designed to help third-\/party applications to interface with the \-S\-B\-S \-On \-Demand service without worrying about the underlying complexity\hypertarget{index_using_sec}{}\section{\-Using the module}\label{index_using_sec}
+\-The module is object-\/oriented, however it is recommended that you let the package create the objects using either the static functions within each module or calling an object's method rather than directly using the class constructors. \-Properties are either pre-\/populated or are populated on request.\hypertarget{index_example_feed}{}\subsection{\-Example\-: Finding a video feed}\label{index_example_feed}
+\-Video feeds can be retrieved using static methods in \hyperlink{namespace_sbs_on_demand_1_1_feed}{\-Feed}.
+
+\-This example finds all the feeds from the \-S\-B\-S \-On \-Demand menu, and chooses the one entitled '\-Program' 
+\begin{DoxyCode}
+ import sbs.Feed
+ feeds = sbs.Feed.getMenuFeeds()
+ feed = feeds['Programs']['feed']
+\end{DoxyCode}
+\hypertarget{index_example_video_feed}{}\subsection{\-Example\-: Getting videos from a feed}\label{index_example_video_feed}
+\-This example prints the title of each video in the feed 
+\begin{DoxyCode}
+ for video in feed.videos:
+   print video.title
+\end{DoxyCode}
+\hypertarget{index_example_video_id}{}\subsection{\-Example\-: Getting a video title when we know the I\-D number}\label{index_example_video_id}
+\-This example gets a video object for a specific video \-I\-D, and then prints the video's title 
+\begin{DoxyCode}
+ import sbs.Video
+ video = sbs.Video.getVideo(videoID)
+ print video.title
+\end{DoxyCode}
+ \hypertarget{index_example_media}{}\subsection{\-Example\-: Getting a video's content url for the first media rendition}\label{index_example_media}
+\-This example uses the video object from \-Example 1, gets all the media associated with it, and then prints each media with its (rtmp) url parameters 
+\begin{DoxyCode}
+ for media in video.media['content']:
+   print media.bitrate, media.baseUrl, media.videoUrl
+\end{DoxyCode}
+ 
