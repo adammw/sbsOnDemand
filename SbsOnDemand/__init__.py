@@ -19,8 +19,8 @@
 #
 # This example finds all the feeds from the SBS On Demand menu, and chooses the one entitled 'Program'
 # @code
-# import sbs.Feed
-# feeds = sbs.Feed.getMenuFeeds()
+# import SbsOnDemand.Feed
+# feeds = SbsOnDemand.Feed.getMenuFeeds()
 # feed = feeds['Programs']['feed']
 # @endcode
 #
@@ -34,8 +34,8 @@
 # @subsection example_video_id Example: Getting a video title when we know the ID number
 # This example gets a video object for a specific video ID, and then prints the video's title
 # @code
-# import sbs.Video
-# video = sbs.Video.getVideo(videoID)
+# import SbsOnDemand.Video
+# video = SbsOnDemand.Video.getVideo(videoID)
 # print video.title
 # @endcode
 # @subsection example_media Example: Getting a video's content url for the first media rendition
