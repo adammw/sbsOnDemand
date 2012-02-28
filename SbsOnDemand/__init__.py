@@ -10,7 +10,9 @@
 # 
 # The module is object-oriented, however it is recommended that you let the package create the objects
 # using either the static functions within each module or calling an object's method rather than directly
-# using the class constructors. Properties are either pre-populated or are populated on request.
+# using the class constructors. Properties are either pre-populated or are populated on request as getters.
+# As such, there may be a delay when accessing properties or methods of objects as the functions are blocking.
+# It is therefore recommended that if used in GUI programs that data is accessed from a separate thread.
 #
 # @subsection example_feed Example: Finding a video feed
 # %Video feeds can be retrieved using static methods in Feed. 
